@@ -178,7 +178,7 @@ if (master.get_digital(DIGITAL_L1)) {
       if (clampstate == 0) { // If the clamp is open
         set_clamp(2); // Close the clamp
       } else {
-        set_clamp(0); // Open the clamp
+        set_clamp(0); // Open the clamp//
       }
     }
 
