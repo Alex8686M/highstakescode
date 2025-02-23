@@ -16,7 +16,7 @@ ez::Drive chassis(
     360);   // Wheel RPM
 
 void on_center_button() { // Toggle the clamp
-  if (clampstate == 0) { // If the clamp is open
+  if (clampstate == 0) { // If the clamp is open//
     set_clamp(2); // Close the clamp
   } else {
     set_clamp(0); // Open the clamp
