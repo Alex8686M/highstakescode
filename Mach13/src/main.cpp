@@ -167,9 +167,9 @@ void opcontrol() {
     } else {
       inveyor.move_velocity(0);
     }
-if (master.get_digital(DIGITAL_L1)) {
+if (master.get_digital(DIGITAL_L2)) {
       ladybrown.move_velocity(200);
-    } else if (master.get_digital(DIGITAL_L2)) {
+    } else if (master.get_digital(DIGITAL_L1)) {
       ladybrown.move_velocity(-200);
     } else {
       ladybrown.move_velocity(0);
