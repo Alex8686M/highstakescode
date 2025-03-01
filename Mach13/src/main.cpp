@@ -61,6 +61,7 @@ void initialize() {
       // Auton("Motion Chaining\n\nDrive forward, turn, and come back, but blend everything together :D", motion_chaining),
       // Auton("Combine all 3 movements", combining_movements),
       // Auton("Interference\n\nAfter driving forward, robot performs differently if interfered or not.", interfered_example)
+
   });
 
   // Initialize chassis and auton selector
@@ -160,9 +161,9 @@ void opcontrol() {
     // chassis.opcontrol_arcade_flipped(ez::SPLIT);    // Flipped split arcade
     // chassis.opcontrol_arcade_flipped(ez::SINGLE);   // Flipped single arcade
 
-    if (master.get_digital(DIGITAL_R1)) {
+    if (master.get_digital(DIGITAL_R2)) {
       inveyor.move_velocity(600);
-    } else if (master.get_digital(DIGITAL_R2)) {
+    } else if (master.get_digital(DIGITAL_R1)) {
       inveyor.move_velocity(-600);
     } else {
       inveyor.move_velocity(0);
@@ -192,6 +193,4 @@ if (master.get_digital(DIGITAL_L2)) {
     } */
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
-  }
-}
-#pragma endregion
+#pragma endregion }

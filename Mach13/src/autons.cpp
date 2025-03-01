@@ -227,9 +227,9 @@ void redleft() {
   chassis.pid_wait();
   chassis.pid_turn_set(-45_deg, TURN_SPEED);
   chassis.pid_wait();
-  ladybrown.move_relative(-5, 200);
+  ladybrown.move_relative(-3, 200);
   pros::delay(1000);
-  chassis.pid_drive_set(-7_in, 60, true);
+  chassis.pid_drive_set(-5_in, 60, true);
   chassis.pid_wait();
   chassis.pid_turn_set(-132_deg, TURN_SPEED);
   chassis.pid_wait();
@@ -239,7 +239,7 @@ void redleft() {
   chassis.pid_turn_set(5_deg, TURN_SPEED);
   chassis.pid_wait();
   inveyor.move(200);
-chassis.pid_drive_set(20_in, 90, true);
+chassis.pid_drive_set(21_in, 90, true);
 chassis.pid_wait();
 chassis.pid_drive_set(4.3_in, 60, true);
 chassis.pid_wait();

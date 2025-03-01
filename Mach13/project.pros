@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Adrian Skills",
+    "project_name": "Mach13",
     "target": "v5",
     "templates": {
       "EZ-Template": {
@@ -422,8 +422,8 @@
     },
     "upload_options": {
       "description": "mmmm ok",
-      "slot": 2,
-      "icon": "alien"
+      "slot": 1,
+      "icon": "pizza"
     },
     "use_early_access": false
   }

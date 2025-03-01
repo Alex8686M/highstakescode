@@ -5,7 +5,9 @@
 // Your motors, sensors, etc. should go here.  Below are examples
 
 // Inveyor
-    inline pros::MotorGroup inveyor ({21, 16}, pros::MotorGears::green , pros::MotorUnits::rotations);
+    inline pros::MotorGroup inveyor ({8, -16}, pros::MotorGears::green , pros::MotorUnits::rotations);
+    inline pros::Motor ladybrown (14, pros::MotorGears::green , pros::MotorUnits::rotations);
+    //inline pros::Motor ladybrown.set_brake_mode(pros::MOTOR_BRAKE_HOLD);
 // Mogo Clamp
 #pragma region Mogo Clamp
     inline pros::adi::DigitalOut mogo ('A', 0);
@@ -30,5 +32,3 @@
       }
     }
 #pragma endregion
-
-inline pros::Motor ladybrown ({14}, pros::MotorGears::green, pros::MotorUnits::rotations);
