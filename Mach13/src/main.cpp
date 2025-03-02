@@ -52,6 +52,7 @@ void initialize() {
   ez::as::auton_selector.autons_add({
       Auton("Red Left", redleft),
       Auton("Blue Right", blueright),
+      Auton("Solo AWP", soloawp),
       Auton("Skills", skills),
       // Auton("Example Drive\n\nDrive forward and come back.", drive_example),
       // Auton("Example Turn\n\nTurn 3 times.", turn_example),
