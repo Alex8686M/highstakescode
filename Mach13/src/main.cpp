@@ -160,7 +160,7 @@ void opcontrol() {
     // chassis.opcontrol_arcade_standard(ez::SINGLE);  // Standard single arcade
     // chassis.opcontrol_arcade_flipped(ez::SPLIT);    // Flipped split arcade
     // chassis.opcontrol_arcade_flipped(ez::SINGLE);   // Flipped single arcade
-
+    pros::MotorGroup inveyor ({8, -16}, pros::MotorGears::green , pros::MotorUnits::rotations);
     if (master.get_digital(DIGITAL_R2)) {
       inveyor.move_velocity(600);
     } else if (master.get_digital(DIGITAL_R1)) {
@@ -193,4 +193,6 @@ if (master.get_digital(DIGITAL_L2)) {
     } */
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
-#pragma endregion }
+    }
+  }
+#pragma endregion
