@@ -223,7 +223,7 @@ void interfered_example() {
 // // . . .
 pros::MotorGroup inveyor ({-8, 16}, pros::MotorGears::green , pros::MotorUnits::rotations);
 void redleft() {
-  chassis.pid_drive_set(-20.5_in, 70, true);
+  chassis.pid_drive_set(-19.5_in, 70, true);
   chassis.pid_wait();
   chassis.pid_turn_set(-45_deg, TURN_SPEED);
   chassis.pid_wait();
@@ -261,6 +261,31 @@ chassis.pid_turn_relative_set(90_deg, TURN_SPEED);
 chassis.pid_wait(); 
 chassis.pid_drive_set(25_in, 100, true);
 chassis.pid_wait();
+}
+
+void redright() {
+  chassis.pid_drive_set(7_in, 100, true);
+  chassis.pid_wait();
+  chassis.pid_turn_relative_set(-45_deg, TURN_SPEED);
+  chassis.pid_wait();
+  ladybrown.move_relative(-1.5, 200);
+  pros::delay(500);
+  chassis.pid_turn_relative_set(-15_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-43_in, 50, true);
+  chassis.pid_wait();
+  set_clamp(2);
+  pros::delay(500);
+  chassis.pid_turn_relative_set(-95_deg, TURN_SPEED);
+  chassis.pid_wait();
+  inveyor.move(200);
+  chassis.pid_drive_set(30_in, 90, true);
+  chassis.pid_wait();
+  chassis.pid_turn_relative_set(180_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(30_in, 90, true);
+  chassis.pid_wait();
+  pros::delay(99999999);
 }
 
 void blueright() {
@@ -302,7 +327,30 @@ chassis.pid_turn_relative_set(-90_deg, TURN_SPEED);
 chassis.pid_wait(); 
 chassis.pid_drive_set(25_in, 100, true);
 chassis.pid_wait();
-pros::delay(99999);
+}
+void blueleft() {
+  chassis.pid_drive_set(10_in, 100, true);
+  chassis.pid_wait();
+  chassis.pid_turn_relative_set(45_deg, TURN_SPEED);
+  chassis.pid_wait();
+  ladybrown.move_relative(-1.5, 200);
+  pros::delay(500);
+  chassis.pid_turn_relative_set(15_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-43_in, 50, true);
+  chassis.pid_wait();
+  set_clamp(2);
+  pros::delay(500);
+  chassis.pid_turn_relative_set(95_deg, TURN_SPEED);
+  chassis.pid_wait();
+  inveyor.move(200);
+  chassis.pid_drive_set(30_in, 90, true);
+  chassis.pid_wait();
+  chassis.pid_turn_relative_set(-180_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(30_in, 90, true);
+  chassis.pid_wait();
+  pros::delay(99999999);
 }
 
 void soloawp(){
@@ -345,121 +393,106 @@ chassis.pid_wait();
 
 void skills() {
   // Score Preload
-  ladybrown.move_relative(-5, 200);
+  ladybrown.move_relative(-1.5, 200);
   pros::delay(1000);
   // Get Mogo
-  chassis.pid_turn_relative_set(90_deg, TURN_SPEED);
+  //chassis.pid_turn_relative_set(45_deg, TURN_SPEED);
+  //chassis.pid_wait();
+  //chassis.pid_turn_relative_set(-45_deg, TURN_SPEED);
+  ///chassis.pid_wait();
+  chassis.pid_drive_set(-12_in, 80, true);
+  chassis.pid_wait(); 
+  chassis.pid_turn_relative_set(-90_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-15, 50, true);
+  chassis.pid_wait();
+  set_clamp(2);
+  pros::delay(3000);
+  inveyor.move(200);
+  // Get and score first Ring
+  chassis.pid_drive_set(-3, 60, true);
   chassis.pid_wait();
   chassis.pid_turn_relative_set(-90_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(-10_in, 60, true);
-  chassis.pid_wait(); 
-  chassis.pid_turn_set(90_deg, TURN_SPEED);
+  chassis.pid_drive_set(22_in, 90, true);
   chassis.pid_wait();
-  chassis.pid_drive_set(-25.5, 50, true);
+  // Get and score second Ring
+  chassis.pid_turn_relative_set(-90_deg, TURN_SPEED);
   chassis.pid_wait();
-  inveyor.move(200);
+  chassis.pid_drive_set(24_in, 90, true);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-2_in, 90, true);
+  chassis.pid_wait();
+  pros::delay(1000);
+  // Get and score third and fourth ring 
+  chassis.pid_turn_relative_set(-88_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(20_in, 90, true);
+  chassis.pid_wait();
+  pros::delay(875);
+  chassis.pid_drive_set(12_in, 90, true);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-9_in, 90, true);
+  chassis.pid_wait();
+  pros::delay(1000);
+  chassis.pid_turn_relative_set(90_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(12_in, 80, true);
+  chassis.pid_wait();
+  pros::delay(500);
+  chassis.pid_turn_relative_set(100_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-8_in, 90, true);
+  chassis.pid_wait();
+  set_clamp(0);
+  pros::delay(500);
+  chassis.pid_drive_set(9_in, 90, true);
+  chassis.pid_wait();
+  chassis.pid_turn_relative_set(-97_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-70_in, 90, true);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-10_in, 50, true);
+  chassis.pid_wait();
   set_clamp(2);
-  // Get and score first Ring
   chassis.pid_drive_set(-3, 60, true);
   chassis.pid_wait();
   chassis.pid_turn_relative_set(90_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(24_in, 40, true);
+  chassis.pid_drive_set(22_in, 90, true);
   chassis.pid_wait();
-  pros::delay(1000);
   // Get and score second Ring
   chassis.pid_turn_relative_set(90_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(21.25_in, 40, true);
+  chassis.pid_drive_set(24_in, 90, true);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-2_in, 90, true);
   chassis.pid_wait();
   pros::delay(1000);
   // Get and score third and fourth ring 
   chassis.pid_turn_relative_set(88_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(20_in, 60, true);
+  chassis.pid_drive_set(20_in, 90, true);
   chassis.pid_wait();
   pros::delay(875);
-  chassis.pid_drive_set(16_in, 40, true);
+  chassis.pid_drive_set(12_in, 90, true);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-9_in, 90, true);
   chassis.pid_wait();
   pros::delay(1000);
-  // Score Mogo
-   chassis.pid_turn_relative_set(122_deg, TURN_SPEED);
-  chassis.pid_wait();
-  set_clamp(0);
-  chassis.pid_drive_set(-12_in, 40, true);
-  chassis.pid_wait();
-  chassis.pid_drive_set(24.5_in, 80, true);
-  chassis.pid_wait();
-  // Get 2nd mogo
-chassis.pid_turn_relative_set(145_deg, TURN_SPEED);
-chassis.pid_wait();
-chassis.pid_drive_set(-50.5_in, 75, true );
-chassis.pid_wait();
-set_clamp(2);
-// Mirror
- chassis.pid_drive_set(-3, 60, true);
-  chassis.pid_wait();
   chassis.pid_turn_relative_set(-90_deg, TURN_SPEED);
   chassis.pid_wait();
-  chassis.pid_drive_set(25_in, 40, true);
+  chassis.pid_drive_set(12_in, 80, true);
   chassis.pid_wait();
-  inveyor.move_relative(10, 200);
-  pros::delay(2000);
-  // Get and score second Ring
-  chassis.pid_turn_relative_set(-90_deg, TURN_SPEED);
-  chassis.pid_wait();
-  chassis.pid_drive_set(21.25_in, 40, true);
-  chassis.pid_wait();
-  pros::delay(2000);
-  // Get and score third and fourth ring
-  chassis.pid_drive_set(3.5_in, 40, true);
-  chassis.pid_wait();
-  chassis.pid_turn_relative_set(-88_deg, TURN_SPEED);
-  chassis.pid_wait();
-  chassis.pid_drive_set(20_in, 60, true);
-  chassis.pid_wait();
-  pros::delay(875);
-  chassis.pid_drive_set(14_in, 40, true);
-  chassis.pid_wait();
-  pros::delay(2500);
-  // Score Mogo
-   chassis.pid_turn_relative_set(-122_deg, TURN_SPEED);
-  chassis.pid_wait();
-  set_clamp(0);
-  chassis.pid_drive_set(-12_in, 40, true);
-  chassis.pid_wait();
-  chassis.pid_drive_set(26_in, 80, true);
-  chassis.pid_wait();
-}
-void redleftbackup() {
-   // Go to goal and clamp
-  chassis.pid_drive_set(-24_in, 50, true);
-  chassis.pid_wait();
-  if (!btn.get_value() == 1) {;
-    chassis.pid_drive_set(1_in, DRIVE_SPEED, true);
-  }
-  set_clamp(2);
   pros::delay(500);
-  inveyor.move_relative(5, 200);
+  chassis.pid_turn_relative_set(-100_deg, TURN_SPEED);
+  chassis.pid_wait();
+  chassis.pid_drive_set(-8_in, 90, true);
+  chassis.pid_wait();
+  set_clamp(0);
   pros::delay(1000);
-  chassis.pid_turn_set(75_deg, TURN_SPEED);
+  chassis.pid_drive_set(24_in, 90, true);
   chassis.pid_wait();
-  while (inveyor.get_actual_velocity() > 10) {;
-    pros::delay(20);
-  }
-  inveyor.move_relative(15, 200);
-  chassis.pid_drive_set(19_in,55, true);
+  chassis.pid_turn_relative_set(30_deg, TURN_SPEED);
   chassis.pid_wait();
-  inveyor.move_relative(10, 200);
-  pros::delay(3000);
-  //Go to ladder
-  chassis.pid_turn_relative_set(160_deg, TURN_SPEED);
-  chassis.pid_wait();
-  chassis.pid_drive_set(33_in, 90, true);
-  chassis.pid_wait();
-}
-void nothing(){
-chassis.pid_drive_set(5_in, 60, true);
-chassis.pid_wait();
 }

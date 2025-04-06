@@ -5,7 +5,9 @@
 extern Drive chassis;
 
 void redleft();
+void redright();
 void blueright();
+void blueleft();
 void skills();
 void soloawp();
 // void drive_example();

@@ -8,12 +8,12 @@
 // Chassis constructor
 ez::Drive chassis(
     // These are your drive motors, the first motor is used for sensing!
-    {11, -12, -13},     // Left Chassis Ports (negative port will reverse it!)
-    {18, 19, -20},  // Right Chassis Ports (negative port will reverse it!)
+    {-11, 12, -13},     // Left Chassis Ports (negative port will reverse it!)
+    {18, -19, 20},  // Right Chassis Ports (negative port will reverse it!)
 
     17,      // IMU Port
     3.25,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
-    360);   // Wheel RPM
+    450);   // Wheel RPM
 
 void on_center_button() { // Toggle the clamp
   if (clampstate == 0) { // If the clamp is open//
@@ -51,7 +51,9 @@ void initialize() {
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
       Auton("Red Left", redleft),
+      Auton("Red Right", redright),
       Auton("Blue Right", blueright),
+      Auton("Blue Left", blueleft),
       Auton("Solo AWP", soloawp),
       Auton("Skills", skills),
       // Auton("Example Drive\n\nDrive forward and come back.", drive_example),
