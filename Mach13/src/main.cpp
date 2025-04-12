@@ -9,7 +9,7 @@
 ez::Drive chassis(
     // These are your drive motors, the first motor is used for sensing!
     {-11, 12, -13},     // Left Chassis Ports (negative port will reverse it!)
-    {18, -19, 20},  // Right Chassis Ports (negative port will reverse it!)
+    {-18, 19, -20},  // Right Chassis Ports (negative port will reverse it!)
 
     17,      // IMU Port
     3.25,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
@@ -163,7 +163,6 @@ void opcontrol() {
     // chassis.opcontrol_arcade_standard(ez::SINGLE);  // Standard single arcade
     // chassis.opcontrol_arcade_flipped(ez::SPLIT);    // Flipped split arcade
     // chassis.opcontrol_arcade_flipped(ez::SINGLE);   // Flipped single arcade
-    pros::MotorGroup inveyor ({8, -16}, pros::MotorGears::green , pros::MotorUnits::rotations);
     if (master.get_digital(DIGITAL_R2)) {
       inveyor.move_velocity(600);
     } else if (master.get_digital(DIGITAL_R1)) {

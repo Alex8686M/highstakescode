@@ -221,7 +221,6 @@ void interfered_example() {
 // . . .
 // Make your own autonomous functions here!
 // // . . .
-pros::MotorGroup inveyor ({-8, 16}, pros::MotorGears::green , pros::MotorUnits::rotations);
 void redleft() {
   chassis.pid_drive_set(-19.5_in, 70, true);
   chassis.pid_wait();

@@ -6,7 +6,7 @@
 
 // Lady Brown
     inline pros::Motor ladybrown (14, pros::MotorGears::green , pros::MotorUnits::rotations);
-    //inline pros::Motor ladybrown.set_brake_mode(pros::MOTOR_BRAKE_HOLD);
+    inline pros::Motor inveyor (21, pros::MotorGears::blue , pros::MotorUnits::rotations);
 // Mogo Clamp
 #pragma region Mogo Clamp
     inline pros::adi::DigitalOut mogo ('A', 0);
