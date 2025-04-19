@@ -4,9 +4,18 @@
 
 // Your motors, sensors, etc. should go here.  Below are examples
 
-// Lady Brown
-    inline pros::Motor ladybrown (14, pros::MotorGears::green , pros::MotorUnits::rotations);
-    inline pros::Motor inveyor (21, pros::MotorGears::blue , pros::MotorUnits::rotations);
+// Conveyor
+    inline pros::Motor inveyor (11, pros::MotorGears::blue , pros::MotorUnits::rotations);
+// Ladybrown
+    inline pros::MotorGroup ladybrown ({16, 17}, pros::MotorGears::green , pros::MotorUnits::degrees);
+    inline pros::Motor ladyleft(17, pros::MotorGears::green , pros::MotorUnits::degrees);
+    inline pros::Motor ladyright(16, pros::MotorGears::green , pros::MotorUnits::degrees);
+    inline int ladystate = 0; // 0 = Passthrough, 1 = Load, 2 = Score
+
+    inline void lady_target(int target) {
+      ladyright(target);
+      ladyleft(target*-1);
+    }
 // Mogo Clamp
 #pragma region Mogo Clamp
     inline pros::adi::DigitalOut mogo ('A', 0);

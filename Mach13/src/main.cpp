@@ -8,8 +8,8 @@
 // Chassis constructor
 ez::Drive chassis(
     // These are your drive motors, the first motor is used for sensing!
-    {-11, 12, -13},     // Left Chassis Ports (negative port will reverse it!)
-    {-18, 19, -20},  // Right Chassis Ports (negative port will reverse it!)
+    {-1, 2, -3},     // Left Chassis Ports (negative port will reverse it!)
+    {18, -19, 20},  // Right Chassis Ports (negative port will reverse it!)
 
     17,      // IMU Port
     3.25,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
@@ -71,6 +71,10 @@ void initialize() {
   chassis.initialize();
   ez::as::initialize();
   master.rumble(".");
+
+  // Initialize device properties
+  ladybrown.set_brake_mode_all(MOTOR_BRAKE_HOLD);
+  ladybrown.tare_position_all();
 }
 #pragma endregion
 #pragma region Disabled
@@ -170,18 +174,35 @@ void opcontrol() {
     } else {
       inveyor.move_velocity(0);
     }
-if (master.get_digital(DIGITAL_L2)) {
+    if (master.get_digital(DIGITAL_L2)) {
       ladybrown.move_velocity(200);
     } else if (master.get_digital(DIGITAL_L1)) {
       ladybrown.move_velocity(-200);
     } else {
-      ladybrown.move_velocity(0);
+      if (ladystate == 0) {
+        ladybrown.move_absolute(0, 100);
+      } else if (ladystate == 1) {
+        ladybrown.move_absolute(100, 100);
+      } else if (ladystate == 2) {
+        if (master.get_digital(DIGITAL_DOWN)) {
+          ladybrown.move_absolute(650, 100);
+        } else {
+          ladystate = 0;
+        }
+      }
     }
     if (master.get_digital_new_press(DIGITAL_B)) { // Toggle the clamp
       if (clampstate == 0) { // If the clamp is open
         set_clamp(2); // Close the clamp
       } else {
         set_clamp(0); // Open the clamp//
+      }
+    }
+    if (master.get_digital_new_press(DIGITAL_DOWN)) {
+      if (ladystate == 0) {
+        ladystate = 1;
+      } else if (ladystate == 1) {
+        ladystate = 2;
       }
     }
 
