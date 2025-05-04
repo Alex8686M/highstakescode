@@ -7,15 +7,17 @@
 // Conveyor
     inline pros::Motor inveyor (11, pros::MotorGears::blue , pros::MotorUnits::rotations);
 // Ladybrown
-    inline pros::MotorGroup ladybrown ({16, 17}, pros::MotorGears::green , pros::MotorUnits::degrees);
-    inline pros::Motor ladyleft(17, pros::MotorGears::green , pros::MotorUnits::degrees);
-    inline pros::Motor ladyright(16, pros::MotorGears::green , pros::MotorUnits::degrees);
-    inline int ladystate = 0; // 0 = Passthrough, 1 = Load, 2 = Score
+    #DEFINE MIN_ANGLE 7
+    #DEFINE LOAD_ANGLE 16
+    #DEFINE MAX_ANGLE 100
+    inline pros::MotorGroup ladybrown ({16, -15}, pros::MotorGears::green , pros::MotorUnits::degrees);
+    inline pros::ADIPotentiometer ldb ('H', pros::E_ADI_POT_EDR);
+    inline int ladystate = 0; // -1 = Free Spin, 0 = Passthrough, 1 = Load, 2 = Score, 3 = Override
 
-    inline void lady_target(int target) {
-      ladyright(target);
-      ladyleft(target*-1);
+    inline int ldb_pct() {
+      return ldb.get_value() / 40.96;
     }
+
 // Mogo Clamp
 #pragma region Mogo Clamp
     inline pros::adi::DigitalOut mogo ('A', 0);
