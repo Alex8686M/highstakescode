@@ -222,44 +222,8 @@ void interfered_example() {
 // Make your own autonomous functions here!
 // // . . .
 void redleft() {
-  chassis.pid_drive_set(-19.5_in, 70, true);
+  chassis.pid_drive_set(34_in, 90);
   chassis.pid_wait();
-  chassis.pid_turn_set(-45_deg, TURN_SPEED);
-  chassis.pid_wait();
-  ladybrown.move_relative(-1.5, 200);
-  pros::delay(500);
-  chassis.pid_drive_set(-2_in, 70, true);
-  chassis.pid_wait();
-  chassis.pid_turn_set(-133_deg, TURN_SPEED);
-  chassis.pid_wait();
-  chassis.pid_drive_set(-36_in, 70, true);
-  chassis.pid_wait();
-  chassis.pid_drive_set(-5_in, 40, true);
-  chassis.pid_wait();
-  set_clamp(2);
-  chassis.pid_turn_set(5_deg, TURN_SPEED);
-  chassis.pid_wait();
-  inveyor.move(200);
-chassis.pid_drive_set(20_in, 70, true);
-chassis.pid_wait();
-chassis.pid_turn_relative_set(90_deg, TURN_SPEED);
-chassis.pid_wait();
-chassis.pid_drive_set(10_in, 70, true);
-chassis.pid_wait();
-chassis.pid_drive_set(-15_in, 70, true);
-chassis.pid_wait();
-chassis.pid_turn_relative_set(45_deg, TURN_SPEED);
-chassis.pid_wait();
-chassis.pid_drive_set(-10_in, 70, true);
-chassis.pid_wait();
-chassis.pid_turn_relative_set(-50_deg, TURN_SPEED);
-chassis.pid_wait();
-chassis.pid_drive_set(22_in, 70, true);
-chassis.pid_wait();
-chassis.pid_turn_relative_set(90_deg, TURN_SPEED);
-chassis.pid_wait(); 
-chassis.pid_drive_set(25_in, 100, true);
-chassis.pid_wait();
 }
 
 void redright() {

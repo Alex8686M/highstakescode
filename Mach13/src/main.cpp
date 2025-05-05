@@ -11,9 +11,10 @@ ez::Drive chassis(
     {-8, 9, -10},     // Left Chassis Ports (negative port will reverse it!)
     {18, -19, 20},  // Right Chassis Ports (negative port will reverse it!)
 
-    17,      // IMU Port
+    4,      // IMU Port
     3.25,  // Wheel Diameter (Remember, 4" wheels without screw holes are actually 4.125!)
     450);   // Wheel RPM
+//ez::tracking_wheel horiz_tracker(13, 2, 4.0);  // This tracking wheel is perpendicular to the drive wheels
 
 void on_center_button() { // Toggle the clamp
   if (clampstate == 0) { // If the clamp is open//
@@ -73,7 +74,7 @@ void initialize() {
   master.rumble(".");
 
   // Initialize device properties
-  ladybrown.set_brake_mode_all(MOTOR_BRAKE_COAST);
+  ladybrown.set_brake_mode_all(MOTOR_BRAKE_HOLD);
 }
 #pragma endregion
 #pragma region Disabled
@@ -153,7 +154,7 @@ void opcontrol() {
         chassis.pid_tuner_toggle();
 
       // Trigger the selected autonomous routine
-      if (master.get_digital(DIGITAL_B) && master.get_digital(DIGITAL_DOWN)) {
+      if (master.get_digital(DIGITAL_UP) && master.get_digital(DIGITAL_LEFT)) {
         autonomous();
         chassis.drive_brake_set(driver_preference_brake);
       }
@@ -182,26 +183,28 @@ void opcontrol() {
     if (master.get_digital(DIGITAL_L1)) {
       if (ldb_pct() < MAX_ANGLE) {
         ladystate = -1;
-        ladybrown.move_velocity(200);
+        ladybrown.move_velocity(LDB_SPEED);
       } else {
         ladybrown.brake();
       }
     } else if (master.get_digital(DIGITAL_L2)) {
       if (ldb_pct() > MIN_ANGLE) {
         ladystate = -1;
-        ladybrown.move_velocity(-200);
+        ladybrown.move_velocity(-1*LDB_SPEED);
       } else {
         ladybrown.brake();
       }
     } else {
       if (ladystate == 0 and ldb_pct() > MIN_ANGLE) {
-          ladybrown.move_velocity(-200);
+          ladybrown.move_velocity(-1*LDB_SPEED);
       } else if (ladystate == 1 and ldb_pct() < LOAD_ANGLE) {
-        ladybrown.move_velocity(200);
+        ladybrown.move_velocity(50);
       } else if (ladystate == 2) {
         if (master.get_digital(DIGITAL_DOWN)) {
           if (ldb_pct() < MAX_ANGLE) {
-            ladybrown.move_velocity(200);
+            ladybrown.move_velocity(LDB_SPEED);
+          } else {
+            ladybrown.brake();
           }
         } else {
           ladystate = 0;
@@ -229,6 +232,9 @@ void opcontrol() {
       }
     }
 
+    if (master.get_digital_new_press(DIGITAL_A)) {
+      rush.toggle();
+    }   
     // Old Clamp Arming Code
     /* if (master.get_digital_new_press(DIGITAL_L2)) { // Arm the clamp
       set_clamp(1);
@@ -240,5 +246,5 @@ void opcontrol() {
 
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
     }
-  }
+  } 
 #pragma endregion
